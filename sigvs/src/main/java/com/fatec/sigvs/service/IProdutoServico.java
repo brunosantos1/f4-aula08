@@ -1,4 +1,4 @@
-package com.fatec.sigvs.servico;
+package com.fatec.sigvs.service;
 
 import java.util.List;
 import java.util.Optional;
