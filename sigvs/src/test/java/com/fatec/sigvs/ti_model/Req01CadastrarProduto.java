@@ -1,4 +1,4 @@
-package com.fatec.sigvs.ti_db;
+package com.fatec.sigvs.ti_model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
