@@ -10,12 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.fatec.sigvs.service.IProdutoRepository;
+import com.fatec.sigvs.service.IProdutoServico;
 import com.fatec.sigvs.model.Produto;
 
 @SpringBootTest
 class Req01CadastrarProdutoTests {
     @Autowired
     IProdutoRepository repository;
+
+    @Autowired
+    IProdutoServico servico;
 
     @Test
     void ct01_cadastrar_produto_com_sucesso() {
@@ -25,6 +29,27 @@ class Req01CadastrarProdutoTests {
         Produto p = repository.save(produto1);
         // entao o repositorio eh incrementado de 1
         assertTrue(repository.count() >= 1);
+
+    }
+
+    @Test
+    void ct99_atualizar_produto_com_sucesso() {
+        // dado um produto
+        Produto produto1 = new Produto("eletrobomba 110v", "maquina de lavar", "22.30", "10");
+        // quando salvo o produto
+        Produto p = repository.save(produto1);
+        // entao o repositorio eh incrementado de 1
+        String descricao =  Double.toString(Math.random());
+
+        p.setDescricao(descricao);
+
+        servico.atualizar(p.getId(), p);
+
+
+        Produto produtoAtualizado = repository.getById(p.getId());
+
+
+        assertTrue(produtoAtualizado.getDescricao()==descricao);
 
     }
 

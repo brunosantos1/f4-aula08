@@ -3,18 +3,24 @@ package com.fatec.sigvs.ti_model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.fatec.sigvs.service.IProdutoRepository;
+import com.fatec.sigvs.service.IProdutoServico;
 import com.fatec.sigvs.model.Produto;
 
 @SpringBootTest
 class Req01CadastrarProdutoDDTests {
     @Autowired
     IProdutoRepository repository;
+    @Autowired
+    IProdutoServico servico;
 
     @ParameterizedTest
     @CsvSource({
@@ -33,4 +39,7 @@ class Req01CadastrarProdutoDDTests {
             assertEquals(re, e.getMessage());
         }
     }
+
+
+    
 }
